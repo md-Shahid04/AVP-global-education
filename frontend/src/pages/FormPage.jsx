@@ -615,7 +615,7 @@ function FormPage() {
                 Need Immediate Assistance?
               </h4>
               <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
-                Speak directly with an education counselor: <strong>+91 78924 74250</strong> (Mon - Sat, 9am - 7pm)
+                Speak directly with an education counselor: <strong>+91 76289 54403</strong> (Mon - Sat, 9am - 7pm)
               </p>
             </div>
           </div>

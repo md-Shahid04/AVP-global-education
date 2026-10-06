@@ -103,8 +103,8 @@ const ContactPage = () => {
                 <div>
                   <h4 style={{ fontSize: '15px', color: '#202535', marginBottom: '4px' }}>Phone Numbers</h4>
                   <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5' }}>
-                    Admissions Helpline: (+012) 345 6789<br />
-                    Mobile / WhatsApp: +91 78924 74250
+                    Admissions Helpline: +91 76289 54403<br />
+                    Mobile / WhatsApp: +91 76289 54403
                   </p>
                 </div>
               </div>
@@ -114,8 +114,8 @@ const ContactPage = () => {
                 <div>
                   <h4 style={{ fontSize: '15px', color: '#202535', marginBottom: '4px' }}>Email Inquiries</h4>
                   <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5' }}>
-                    admissions@avpglobaleducation.com<br />
-                    support@avpglobaleducation.com
+                    crcnitrox@gmail.com<br />
+                    admissions@avpglobaleducation.com
                   </p>
                 </div>
               </div>

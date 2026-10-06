@@ -104,7 +104,7 @@ const Footer = () => {
 
           <div className="social-icons">
             <a
-              href="https://wa.me/917892474250"
+              href="https://wa.me/917628954403"
               target="_blank"
               rel="noopener noreferrer"
               className="whatsapp"
@@ -134,11 +134,11 @@ const Footer = () => {
           </div>
 
           <p className="footer-contact-info" style={{ marginTop: '16px' }}>
-            Mobile: +91 78924 74250
+            Mobile: +91 76289 54403
           </p>
 
           <p className="footer-contact-info">
-            Email: admissions@avpglobaleducation.com
+            Email: crcnitrox@gmail.com
           </p>
         </div>
       </div>

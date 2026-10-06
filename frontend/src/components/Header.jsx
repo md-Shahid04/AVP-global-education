@@ -18,7 +18,7 @@ const Header = () => {
         </div>
 
         <div className="top-bar-socials">
-          <span>📞 Admissions Helpline: (+012) 345 6789</span>
+          <span>📞 Admissions Helpline: +91 76289 54403</span>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ const Header = () => {
             <span>
               <strong>CALL US TODAY!</strong>
               <br />
-              (+012) 345 6789
+              +91 76289 54403
             </span>
           </div>
 
