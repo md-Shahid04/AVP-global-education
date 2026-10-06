@@ -4,11 +4,13 @@
   "private": true,
   "description": "AVP Global Education Platform",
   "scripts": {
-    "frontend:dev": "npm --prefix frontend run dev",
-    "frontend:build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "build": "npm --prefix backend install",
     "backend:dev": "npm --prefix backend run dev",
     "backend:start": "npm --prefix backend start",
-    "backend:seed": "npm --prefix backend run seed"
+    "backend:seed": "npm --prefix backend run seed",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build"
   },
   "keywords": ["education", "consultancy", "react", "express", "mongodb"],
   "author": "",
