@@ -26,24 +26,39 @@ const app = express();
 app.use(helmet());
 
 // CORS configuration
+const normalizeUrl = (url) => (url ? url.trim().replace(/\/+$/, '') : null);
+
+const configuredClientUrl = normalizeUrl(process.env.CLIENT_URL);
 const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
+  configuredClientUrl,
+  'https://avp-global-education-tau.vercel.app',
   'http://localhost:5173',
   'http://localhost:3000',
   'http://127.0.0.1:5173',
-];
+].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, postman)
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (such as mobile apps, curl, Postman, health monitors)
+      if (!origin) {
         return callback(null, true);
       }
-      callback(new Error('Blocked by CORS policy'));
+
+      const cleanOrigin = normalizeUrl(origin);
+      const isAllowed =
+        allowedOrigins.includes(cleanOrigin) ||
+        allowedOrigins.includes(origin) ||
+        cleanOrigin.endsWith('.vercel.app');
+
+      if (isAllowed) {
+        return callback(null, true);
+      }
+
+      return callback(null, false);
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
@@ -58,9 +73,10 @@ app.use('/api', apiLimiter);
 // Health check
 app.get('/api/health', (req, res) => {
   res.status(200).json({
+    success: true,
     status: 'ok',
+    message: 'AVP Global Education API is running',
     timestamp: new Date().toISOString(),
-    service: 'AVP Global Education API',
   });
 });
 
