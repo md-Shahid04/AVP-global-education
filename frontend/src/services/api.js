@@ -1,6 +1,25 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const getApiBaseUrl = () => {
+  let url = (import.meta.env.VITE_API_URL || '').trim();
+
+  // If no env variable is defined, fallback to local backend or production default
+  if (!url) {
+    return 'http://localhost:5000/api';
+  }
+
+  // Remove any trailing slashes
+  url = url.replace(/\/+$/, '');
+
+  // Automatically guarantee /api suffix (prevents 404 whether user sets root or /api in Vercel)
+  if (!url.endsWith('/api')) {
+    url = `${url}/api`;
+  }
+
+  return url;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 const api = axios.create({
   baseURL: API_BASE_URL,

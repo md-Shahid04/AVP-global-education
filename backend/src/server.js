@@ -70,8 +70,8 @@ app.use(express.urlencoded({ extended: true, limit: '20kb' }));
 // General Rate limiting
 app.use('/api', apiLimiter);
 
-// Health check
-app.get('/api/health', (req, res) => {
+// Health check (supports both /api/health and /health)
+app.get(['/api/health', '/health'], (req, res) => {
   res.status(200).json({
     success: true,
     status: 'ok',
@@ -80,7 +80,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Mount Routes
+// Primary API Routes (standard /api prefix)
 app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/colleges', collegeRoutes);
@@ -88,6 +88,15 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Compatibility Aliases (supports requests without /api prefix to guarantee 0 404 errors)
+app.use('/auth', authRoutes);
+app.use('/leads', leadRoutes);
+app.use('/colleges', collegeRoutes);
+app.use('/courses', courseRoutes);
+app.use('/contact', contactRoutes);
+app.use('/newsletter', newsletterRoutes);
+app.use('/admin', adminRoutes);
 
 // Error Handling
 app.use(notFound);
